@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pragati Landscapes</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header">
+    <h1 class="brand-title">Pragati Landscapes</h1>
+    <nav>
+        <a href="#order">Order</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- ================= HERO SECTION ================= -->
+<section class="hero">
+    <img th:src="@{/images/pavour1.jpg}" alt="Landscape Image">
+    <div class="hero-text">
+        <h1>Order Booking</h1>
+        <p>Place your order with us!</p>
+    </div>
+</section>
+
+<!-- ================= ORDER FORM ================= -->
+<section id="order" class="order-section">
+    <h2 class="order-heading">Place Your Order</h2>
+
+    <p class="success" th:if="${success}" th:text="${success}"></p>
+
+    <div class="order-container">
+        <form th:action="@{/order}" th:object="${order}" method="post">
+
+            <input type="text"
+                   placeholder="Name"
+                   th:field="*{name}"
+                   required>
+
+            <input type="tel"
+                   th:field="*{phone}"
+                   pattern="[0-9]{10}"
+                   maxlength="10"
+                   placeholder="10-digit Phone Number"
+                   oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                   required>
+
+            <input type="email"
+                   placeholder="Email"
+                   th:field="*{email}"
+                   required>
+
+            <input type="text"
+                   placeholder="Address"
+                   th:field="*{address}"
+                   required>
+
+            <input type="text"
+       name="quantity"
+       inputmode="numeric"
+       pattern="[0-9]*"
+       placeholder="Order Quantity (in blocks)"
+       required>
+                        
+            
+
+            <button type="submit">Submit Order</button>
+        </form>
+    </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section id="products" class="products-section">
+    <h2>Our Products</h2>
+
+    <div class="products">
+
+    <div class="product-card">
+        <img th:src="@{/images/pavour1.jpg}" alt="Interlocking Pavers">
+        <p>Interlocking Pavers</p>
+    </div>
+
+    <div class="product-card">
+        <img th:src="@{/images/pavour2.jpg}" alt="Zig Zag Blocks">
+        <p>Zig Zag Blocks</p>
+    </div>
+
+    <div class="product-card">
+        <img th:src="@{/images/pavour3.jpg}" alt="Grass Pavers">
+        <p>Normal Pavers</p>
+    </div>
+
+    <div class="product-card">
+        <img th:src="@{/images/pavour4.jpg}" alt="Heavy Duty Pavers">
+        <p>Yellow Pavers</p>
+    </div>
+
+    <div class="product-card">
+        <img th:src="@{/images/pavour5.jpg}" alt="Designer Pavers">
+        <p>Designer Pavers</p>
+    </div>
+
+</div>
+    
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>📞 Phone: <a href="tel:+919219546245">+91 9219546245</a></p>
+    <p>📧 Email:
+        <a href="mailto:specs.pragati@gmail.com">specs.pragati@gmail.com</a>
+    </p>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 Pragati Landscapes</p>
+</footer>
+
+</body>
+</html>
